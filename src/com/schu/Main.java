@@ -36,6 +36,20 @@ public class Main {
             System.out.println(employee.getName());
         }
 
+        UpperConcat uc = (S1, S2) -> S1.toUpperCase() + S2.toUpperCase();
+        String sillyString = doStringStuff(uc, employeeList.get(0).getName(), employeeList.get(1).getName());
+        System.out.println(sillyString);
+//        String sillyString = doStringStuff(new UpperConcat() {
+//            @Override
+//            public String upperAndConcat(String s1, String s2) {
+//                return s1.toUpperCase() + s2.toUpperCase();
+//            }
+//        }, employeeList.get(0).getName(), employeeList.get(1).getName());
+//        System.out.println(sillyString);
+    }
+
+    public final static String doStringStuff(UpperConcat us, String S1, String S2) {
+        return us.upperAndConcat(S1, S2);
     }
 }
 
@@ -64,4 +78,8 @@ class Employee {
     public void setAge(int age) {
         this.age = age;
     }
+}
+
+interface UpperConcat {
+    public String upperAndConcat(String s1, String s2);
 }
